@@ -3,7 +3,7 @@
 ini_set("display_errors","On");
 //MySQLコネクション生成
 
-$link = mysqli_connect("localhost","root","root","world");
+$link = mysqli_connect("db","root","root","world");
 
 //DBコネクションを確立
 if(!$link) {
