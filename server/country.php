@@ -1,22 +1,21 @@
 <?php
 
-ini_set("display_errors","On");
-//MySQLコネクション生成
+ini_set('display_errors', "On");
 
-$link = mysqli_connect("localhost","root","root","world");
-
-//DBコネクションを確立
+// MySQLiコネクタを生成
+$link = mysqli_connect("db","root","root","world");
+// DBコネクションを確立
 if(!$link) {
     die("コネクションエラー");
 }
 
-//SQL文を作成
-$query = "SELECT Code, Name , Continent ,Region  FROM country ORDER BY Code LIMIT 30";
+// SQL文を生成
+$query = "SELECT Code, Name, Continent, Region FROM country ORDER BY Code LIMIT 30";
 
-//SQL文を続行、結果を変数に格納
-$result = mysqli_query($link,$query);
+// SQL文を実行、結果を変数に格納
+$result = mysqli_query($link, $query);
 
-//DBコネクションを切断
+// DBコネクションを切断
 mysqli_close($link);
 
 ?>
@@ -30,30 +29,26 @@ mysqli_close($link);
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
   </head>
   <body>
     <table class="table">
-      <thead>
-          <th>Code</th>
-          <th>Name</th>
-          <th>Continent</th>
-          <th>Region</th>
-      </thead>
-      <tbody>
-          <?php while($row = mysqli_fetch_assoc($result)){?>
+        <thead>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Continent</th>
+            <th>Region</th>
+        </thead>
+        <tbody>
+            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                 <tr>
-                    <td><?php echo $row['Code'];?></td>
-                    <td><?php echo $row['Name'];?></td>
-                    <td><?php echo $row['Continent'];?></td>
-                    <td><?php echo $row['Region'];?></td>
+                    <td><?php echo $row[ 'Code' ]; ?></td>
+                    <td><?php echo $row[ 'Name' ]; ?></td>
+                    <td><?php echo $row[ 'Continent' ]; ?></td>
+                    <td><?php echo $row[ 'Region' ]; ?></td>
                 </tr>
-            <?php }?>
-      </tbody>
-    </table>
-
-<h1> Hello world</h1>
-
+            <?php } ?>    
+        </tbody>
+    </table>    
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
